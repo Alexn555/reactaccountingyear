@@ -1,0 +1,22 @@
+$cellColor: #1E81D8;
+
+%commonCell {
+  border: 1px solid grey;
+  text-align: center;
+}
+
+.blankCell {
+  @extend %commonCell;
+  color: black;
+}
+
+.taskCell {
+  @extend %commonCell;
+  background: $cellColor;
+  color: white;
+  cursor: pointer;
+}
+
+.cellRow {
+  margin-bottom: 10px;
+}

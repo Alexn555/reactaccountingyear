@@ -1,0 +1,64 @@
+.task-table td {
+  max-width: 120px;
+}
+
+input[type="text"] {
+	width: 70px;
+	background: #f3f3f3;
+}
+
+.filterField {
+	margin-left: 10px;
+	width: 150px !important;
+	background: #f3f3f3;
+}
+
+
+// Mobile devices
+@media screen and (max-width: 992px) {
+
+    .task-table td {
+	  max-width: 100%;
+	}
+
+	// Force table to not be like tables anymore
+	table, thead, tbody, th, td, tr {
+		display: block;
+	}
+
+	// Hide table headers (but not display: none;, for accessibility)
+	thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+		background: blue;
+	}
+
+	tr {
+		border: 1px solid #ccc;
+		margin-bottom: 10px;
+	}
+
+	td {
+		// Behave  like a "row"
+		border: none;
+		border-bottom: 1px solid #eee;
+		position: relative;
+		padding-left: 50%;
+		width: 100%;
+
+		&:before {
+			width: 200px;
+			margin-right: 20px;
+			font-weight: bold;
+			padding-right: 50px;
+			white-space: nowrap;
+		}
+	}
+
+	td:nth-of-type(1):before { content: "Name"; }
+	td:nth-of-type(2):before { content: "StartDate"; }
+	td:nth-of-type(3):before { content: "EndDate"; }
+	td:nth-of-type(4):before { content: "Edit/Save"; }
+	td:nth-of-type(5):before { content: "Delete"; }
+}
