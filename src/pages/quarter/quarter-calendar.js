@@ -1,11 +1,18 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import { Message, Segment, Button } from 'semantic-ui-react';
+
+import SemanticDatepicker from 'react-semantic-ui-datepickers';
+import 'react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css';
+
+import { DATE_FORMAT } from '../../common/settings';
+
 import { getTasks } from '../../actions/task-actions';
-import { shiftMonth } from '../../utils/date';
+import { shiftMonth, getGetStrFromDate, getDateFromStr } from '../../utils/date';
 
 import './quarter-calendar.scss';
 import TaskQuarter from '../../components/quarter';
+
 
 class QuarterCalendarPage extends Component {
 
@@ -15,6 +22,7 @@ class QuarterCalendarPage extends Component {
 
   componentDidMount() {
 	this.props.getTasks();
+	this.setState({ currentDate: '10.05.2020' });
   }
 
   handleInputChange(event) {
@@ -25,15 +33,30 @@ class QuarterCalendarPage extends Component {
     }
   }
 
+  onDatePickChange(event, data) {
+      if (data && data !== null && data.value !== null){
+          const parsed = getGetStrFromDate(data.value);
+          this.setState({ currentDate: parsed });
+      }
+  }
+
   setStartDate() {
+    const { currentDate } = this.state;
+    if (currentDate === null || currentDate === '') { return null};
     return (
         <>
             <h2>Start Date</h2>
             <input type="text"
                    className="filterField"
-                   placeholder="DD.MM.YYYY"
+                   value={currentDate}
+                   placeholder={DATE_FORMAT}
                    name="filterName" onChange={this.handleInputChange.bind(this)}
             />
+          <SemanticDatepicker
+              onChange={this.onDatePickChange.bind(this)}
+              value={getDateFromStr(currentDate)}
+              format={DATE_FORMAT}
+          />
         </>
     );
   }

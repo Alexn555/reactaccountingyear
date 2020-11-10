@@ -1,5 +1,6 @@
 // Date utility helper
 import moment from 'moment';
+import { DATE_FORMAT } from '../common/settings';
 
 export function getWeeksInMonth(month, year){
     month = month - 1;
@@ -42,7 +43,6 @@ export function dateToTimestamp(dateStr) {
     if (dateStr === '') { return 0; }
     const date = parseDateString(dateStr);
     const formatDate = new Date( date.year, date.month - 1, date.day);
-    console.log(formatDate.getTime());
     const tms = formatDate.getTime();
     return tms;
 }
@@ -60,23 +60,33 @@ export function shiftMonth(currentDate, side = 'prev', monthCount = 1) {
     const formatedDate = `${date.month}/${date.day}/${date.year}`;
     let newDate;
     if (side === 'prev') {
-        newDate = moment(formatedDate).subtract(monthCount, 'months').format('DD.MM.YYYY');
+        newDate = moment(formatedDate).subtract(monthCount, 'months').format(DATE_FORMAT);
     } else {
-        newDate = moment(formatedDate).add(monthCount, 'months').format('DD.MM.YYYY');
+        newDate = moment(formatedDate).add(monthCount, 'months').format(DATE_FORMAT);
     }
     return newDate;
 }
 
+export function getGetStrFromDate(dateStr) {
+    return moment(dateStr).format(DATE_FORMAT);
+}
+
+export function getDateFromStr(str) {
+    const arrDate = str.split('.');
+    const dt = new Date(arrDate[2], arrDate[1] - 1, arrDate[0]);
+    return dt;
+}
+
 export function getWeekNumber(date) {
     if (date !== '' && date.length > 9) {
-        return moment(date, 'DD.MM.YYYY').week();
+        return moment(date, DATE_FORMAT).week();
     }
     return -1;
 }
 
 export function getWeekYear(date) {
     if (date !== '' && date.length > 9) {
-        return moment(date, 'DD.MM.YYYY').year();
+        return moment(date, DATE_FORMAT).year();
     }
     return -1;
 }
