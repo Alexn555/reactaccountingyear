@@ -10,7 +10,7 @@ import { DATE_FORMAT } from '../../common/settings';
 import { getTasks } from '../../actions/task-actions';
 import { shiftMonth, getGetStrFromDate, getDateFromStr } from '../../utils/date';
 
-import './quarter-calendar.scss';
+import styles from './quarter-calendar.module.scss';
 import TaskQuarter from '../../components/quarter';
 
 
@@ -77,7 +77,7 @@ class QuarterCalendarPage extends Component {
     const { currentDate } = this.state;
     if (currentDate === '') { return null };
     return (
-        <div className="arrows">
+        <div className={styles.arrows}>
             <div>
                 <Button icon='angle left' onClick={this.previousMonth.bind(this)} />
             </div>

@@ -1,0 +1,15 @@
+$cellColor: #1E81D8;
+
+%commonCell {
+  border: 1px solid grey;
+  text-align: center;
+}
+
+.blankCell {
+  @extend %commonCell;
+  color: black;
+}
+
+.cellRow {
+  margin-bottom: 10px;
+}

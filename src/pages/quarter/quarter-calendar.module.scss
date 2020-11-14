@@ -1,0 +1,12 @@
+.arrows {
+  margin-top: 5px;
+  height: 30px;
+
+  div:nth-of-type(odd) {
+    float: left;
+  }
+
+  div:nth-of-type(even) {
+    float: right;
+  }
+}

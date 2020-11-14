@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, GridColumn, GridRow, Divider, Button } from 'semantic-ui-react';
 import { getWeekNumber, getWeekYear } from '../../utils/date';
-import './quarterItem.scss';
+import styles from './quarterItem.module.scss';
 
 import TaskQuarterCell from './taskCell';
 
@@ -11,7 +11,7 @@ function QuarterItem(props) {
     const { year, weeks } = monthInfo;
 
     const BlankCell = (
-        <GridColumn className="blankCell" >
+        <GridColumn className={styles.blankCell} >
             <Button icon='circle outline' />
         </GridColumn>
     );
@@ -37,7 +37,7 @@ function QuarterItem(props) {
                             Cell = TaskCell;
                         }
                         return (
-                            <GridRow key={index} className="cellRow">
+                            <GridRow key={index} className={styles.cellRow}>
                                 {Cell}
                             </GridRow>
                         );

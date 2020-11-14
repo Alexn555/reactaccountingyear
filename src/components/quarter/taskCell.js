@@ -1,6 +1,5 @@
 import React from 'react';
 import { Popup, Button } from 'semantic-ui-react';
-import './quarterItem.scss';
 
 function TaskQuarterCell(props) {
     const { task } = props;

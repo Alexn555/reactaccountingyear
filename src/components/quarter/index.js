@@ -11,7 +11,7 @@ import {
 import { getScreenColumnsDivider } from '../../utils/screen';
 import QuarterItem from './quarterItem';
 
-import './quarter.scss';
+import styles from './quarter.module.scss';
 
 export default class TaskQuarter extends Component {
 
@@ -67,7 +67,7 @@ export default class TaskQuarter extends Component {
 
         return (
             <>
-                <h2 className="title">
+                <h2 className={styles.title}>
                     {quarterNumber} Quarter {year}
                 </h2>
                 <Grid columns={columns} divided>

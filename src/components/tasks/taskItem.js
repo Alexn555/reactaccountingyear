@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Icon, Table } from 'semantic-ui-react';
-import './tasks.scss';
+import styles from './tasks.module.scss';
 
 export default class TaskItem extends Component {
 
@@ -44,7 +44,7 @@ export default class TaskItem extends Component {
 					type="text"
 					ref={nameInput => this.nameInput = nameInput}
 					defaultValue={name}
-					className="nameInput"
+					className={styles.nameInput}
 				/>
 			</Table.Cell>
 			<Table.Cell>
@@ -82,10 +82,10 @@ export default class TaskItem extends Component {
 			  <Table.Cell>{startDate}</Table.Cell>
 			  <Table.Cell>{endDate}</Table.Cell>
 			  <Table.Cell>
-				  <Icon name="edit" className="button" onClick={this.editTask} />
+				  <Icon name="edit" className={styles.button} onClick={this.editTask} />
 			  </Table.Cell>
 			  <Table.Cell>
-				  <Icon name="trash alternate" className="button" onClick={this.deleteTask} />
+				  <Icon name="trash alternate" className={styles.button} onClick={this.deleteTask} />
 			  </Table.Cell>
 		  </Table.Row>
 	  );
